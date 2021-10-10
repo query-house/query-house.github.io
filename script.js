@@ -53,5 +53,8 @@ const questions=[
 
 let link= document.getElementById("que");
 let time = new Date();
-if(time.getHours()>=10)
-	link.href=questions[time.getDate()-10];
+if(time.getHours()>7 && time.getHours()<19)
+  link.removeAttribute("href");
+else
+	link.setAttribute("href",questions[time.getDate()-11])
+
