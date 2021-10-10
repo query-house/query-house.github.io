@@ -1,34 +1,4 @@
-// Set the date we're counting down to
-var countDownDate = new Date("Oct 12, 2021 07:00:00").getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-
-
-// alert("connected");
 const questions=[
 "https://practice.geeksforgeeks.org/problems/twisted-prime-number0500/1/?category[]=Prime%20Number&category[]=Prime%20Number&page=2&query=category[]Prime%20Numberpage2category[]Prime%20Number",
 
@@ -56,9 +26,98 @@ let time = new Date();
 if(time.getHours()>7 && time.getHours()<19)
   link.removeAttribute("href");
 else if(time.getHours()>=0 && time.getHours()<7)
-	link.setAttribute("href",questions[time.getDate()-12])
+	link.setAttribute("href",questions[time.getDate()-1-11])
 else
     link.setAttribute("href",questions[time.getDate()-11])
 
 
+// ---------------------------TIMER CODE------------------------------------
 
+
+
+// Set the date we're counting down to
+function day_ends(){
+  let status=document.getElementById("status");
+  status.innerHTML="ends";
+
+
+let countDownDate=0;
+if(time.getHours()>=0 && time.getHours()<7)
+  countDownDate = new Date(`Oct ${time.getDate()}, 2021 07:00:00`).getTime();
+else
+  countDownDate = new Date(`Oct ${time.getDate()+1}, 2021 07:00:00`).getTime();
+
+// Update the count down every 1 second
+let x = setInterval(function() {
+
+  // Get today's date and time
+  let now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  let distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML =hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    day_starts();
+   
+  }
+}, 1000);
+
+// }
+}
+
+
+
+
+
+function day_starts(){
+
+  let day_number = document.getElementById("day_number");
+  let status=document.getElementById("status");
+  day_number.innerHTML=time.getDate()-10;
+  status.innerHTML="starts";
+ 
+  let countDownDate = new Date(`Oct ${time.getDate()}, 2021 19:00:00`).getTime();
+
+  let x = setInterval(function() {
+
+  // Get today's date and time
+  let now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  let distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML =hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    day_ends();
+  }
+}, 1000);
+}
+
+
+if(time.getHours()>=19 || time.getHours()<7)
+  day_ends();
+else
+  day_starts();
