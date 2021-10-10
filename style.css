@@ -20,7 +20,6 @@ p {
     font-size: 14px;
     font-weight: 500;
     color: #eee;
-    opacity: 0.3;
 }
 .letter {
     width: 24px;
@@ -469,17 +468,7 @@ body {
 /* timer */
 
 #demo{
-    font-size: 18px;
+    font-size: 22px;
 }
 
 
-/*---------------------------------------TRACK PAGE-----------------------------------------*/
-
-#track{
-    font-family: sans-serif;
-    text-align: left;
-    color: white;
-}
-#check{
-    padding-left: 15px;
-}
