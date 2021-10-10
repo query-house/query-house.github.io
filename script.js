@@ -39,6 +39,10 @@ else
 function day_ends(){
   let status=document.getElementById("status");
   status.innerHTML="ends";
+if(time.getHours()>19)
+    day_number.innerHTML=time.getDate()-10;
+  else
+    day_number.innerHTML=time.getDate()-11;
 
 
 let countDownDate=0;
