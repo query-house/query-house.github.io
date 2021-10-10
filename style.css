@@ -1,6 +1,9 @@
 body {
     text-align: center;
     background-color: #1d1f20;
+     background: url("https://i.imgur.com/inQZ4dJ.jpg") no-repeat center center
+    fixed;
+  background-size: cover;
 }
 
 
