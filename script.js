@@ -25,7 +25,7 @@ let link= document.getElementById("que");
 let time = new Date();
 if(time.getHours()>=7 && time.getHours()<19)
   link.removeAttribute("href");
-else if(time.getHours()>=0 && time.getHours()<7)
+else if(time.getHours()>=0 && time.getHours()<12)
 	link.setAttribute("href",questions[time.getDate()-1-11])
 else
     link.setAttribute("href",questions[time.getDate()-11])
